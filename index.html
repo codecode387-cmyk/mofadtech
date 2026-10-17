@@ -127,8 +127,8 @@
   /* WHAT WE OFFER SECTION */
   .offer-card { display: flex; flex-direction: column; overflow: hidden; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); transition: .3s; border: 1px solid var(--line); cursor: pointer; }
   .offer-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(8,45,114,.12); }
-  .offer-img { height: 200px; overflow: hidden; position: relative; background: var(--mist); display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--line); }
-  .offer-img img { width: 100%; height: 100%; object-fit: contain; transition: transform 0.4s ease; padding: 15px;}
+  .offer-img { height: 220px; overflow: hidden; position: relative; background: #fff; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--line); padding: 15px; }
+  .offer-img img { width: 100%; height: 100%; object-fit: contain; transition: transform 0.4s ease; }
   .offer-card:hover .offer-img img { transform: scale(1.05); }
   .offer-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
   .offer-body h3 { font-size: 1.15rem; margin-bottom: 10px; color: var(--navy); }
@@ -389,11 +389,11 @@
     <div class="sec-head reveal" style="text-align:center; margin:0 auto 44px auto;">
       <p class="eyebrow">Our Products & Services</p>
       <h2>WHAT WE OFFER</h2>
-      <p>Kindly Click the Generator Images Below for more details on our generators.</p>
+      <p>Kindly Click the Images Below for more details or to request a quote.</p>
     </div>
     
     <div class="grid grid-3">
-      <!-- Item 1 -->
+      <!-- Generator Supplies 1 -->
       <div class="offer-card reveal" onclick="openModal()">
         <div class="offer-img">
           <img src="fg-wilson-offer.png" alt="FG Wilson & Perkins Generator" />
@@ -404,7 +404,7 @@
         </div>
       </div>
 
-      <!-- Item 2 -->
+      <!-- Generator Supplies 2 -->
       <div class="offer-card reveal reveal-delay-1" onclick="openModal()">
         <div class="offer-img">
           <img src="yorc.png" alt="YORC Generator" />
@@ -415,7 +415,7 @@
         </div>
       </div>
 
-      <!-- Item 3 -->
+      <!-- Generator Supplies 3 -->
       <div class="offer-card reveal reveal-delay-2" onclick="openModal()">
         <div class="offer-img">
           <img src="fotech-perkins.png" alt="Yihua Perkins Generator" />
@@ -426,7 +426,7 @@
         </div>
       </div>
 
-      <!-- Item 4 -->
+      <!-- Generator Supplies 4 -->
       <div class="offer-card reveal" onclick="openModal()">
         <div class="offer-img">
           <img src="elektromak.png" alt="Elektromak Generator" />
@@ -437,7 +437,7 @@
         </div>
       </div>
 
-      <!-- Item 5 -->
+      <!-- Generator Repairs -->
       <div class="offer-card reveal reveal-delay-1" onclick="openModal()">
         <div class="offer-img">
           <img src="repairs.png" alt="Generator Repairs" />
@@ -448,7 +448,7 @@
         </div>
       </div>
 
-      <!-- Item 6 -->
+      <!-- Petrol Generators -->
       <div class="offer-card reveal reveal-delay-2" onclick="openModal()">
         <div class="offer-img">
           <img src="petrol-gen.png" alt="Petrol Generators" />
@@ -458,6 +458,84 @@
           <p>Introducing our petrol generating sets from 2kva – 10kva aluminum coil and copper coil. Nationwide delivery and Warranty. Terms and Conditions apply.</p>
         </div>
       </div>
+
+      <!-- Community Power (Transformer) -->
+      <div class="offer-card reveal" onclick="openModal()">
+        <div class="offer-img">
+          <img src="transformer.jpg" alt="High Voltage Transformers" />
+        </div>
+        <div class="offer-body">
+          <h3>Community Power</h3>
+          <p>As well as generators, we also install and commission high voltage transformers along with their electrical wirings for communities across the length and breadth of Nigeria.</p>
+        </div>
+      </div>
+
+      <!-- PMS/AGO Supplies -->
+      <div class="offer-card reveal reveal-delay-1" onclick="openModal()">
+        <div class="offer-img">
+          <img src="pms.jpg" alt="PMS AGO Truck Delivery" />
+        </div>
+        <div class="offer-body">
+          <h3>PMS/AGO Supplies</h3>
+          <p>AGO/PMS is key to off-grid energy supplies. At Fotech, we do prompt delivery of AGO/PMS products all over Nigeria. We guarantee the delivery of non-adulterated products always.</p>
+        </div>
+      </div>
+
+      <!-- Solar Systems -->
+      <div class="offer-card reveal reveal-delay-2" onclick="openModal()">
+        <div class="offer-img">
+          <img src="solar.jpg" alt="Solar System Installation" />
+        </div>
+        <div class="offer-body">
+          <h3>Solar Systems</h3>
+          <p>We handle supply and installation of Perkins generating sets, Maintenance, Repairs, Diesel tank, supply of non adulterated diesel, solar solutions, supply of home appliances (TVs & ACs).</p>
+        </div>
+      </div>
+
+      <!-- Standing AC -->
+      <div class="offer-card reveal" onclick="openModal()">
+        <div class="offer-img">
+          <img src="standing-ac.png" alt="Standing AC" />
+        </div>
+        <div class="offer-body">
+          <h3>Standing AC</h3>
+          <p>We supply and install all sizes of modern air-conditioning units ranging from 3HP- 5HP STANDING AC. We guarantee delivery of brand quality products (warranty T&C Apply).</p>
+        </div>
+      </div>
+
+      <!-- Standing Inverter AC -->
+      <div class="offer-card reveal reveal-delay-1" onclick="openModal()">
+        <div class="offer-img">
+          <img src="inverter-ac.png" alt="Standing Inverter AC" />
+        </div>
+        <div class="offer-body">
+          <h3>Standing Inverter AC</h3>
+          <p>We supply and install all sizes of modern air-conditioning inverter units ranging from 3HP- 5HP INVERTER STANDING AC. We guarantee delivery of brand quality products (warranty T&C APPLIES).</p>
+        </div>
+      </div>
+
+      <!-- Television Sets -->
+      <div class="offer-card reveal reveal-delay-2" onclick="openModal()">
+        <div class="offer-img">
+          <img src="tv.png" alt="Television Sets" />
+        </div>
+        <div class="offer-body">
+          <h3>Television Sets</h3>
+          <p>Introducing our branded television sets – TCL, AEON, SYNINX TV-HD ANDROID (FHD/QLED/UHD/UHD SLIM/MINI-LED). Nationwide delivery. Warranty, T & C Apply.</p>
+        </div>
+      </div>
+
+      <!-- Air-conditioners -->
+      <div class="offer-card reveal" onclick="openModal()">
+        <div class="offer-img">
+          <img src="split-ac.png" alt="Split Air-Conditioners" />
+        </div>
+        <div class="offer-body">
+          <h3>Air-conditioners</h3>
+          <p>We sell, supply and install all sizes of modern air-conditioning sets ranging from 1HP to 2.5HP SPLIT ACs with R22 and R410 gas. We deliver products nationwide. Warranty, T & C Apply.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -786,12 +864,14 @@
             <option value="Repairs">Generator Repairs</option>
             <option value="Maintenance">Generator Maintenance</option>
             <option value="Inverter/Solar">Inverter / Solar Setup</option>
+            <option value="AC/TV">AC / Television Purchase</option>
+            <option value="PMS/AGO">PMS/AGO Supplies</option>
             <option value="Other">Other Enquiry</option>
           </select>
         </div>
         <div class="field">
-          <label for="model">Generator Model / Power Rating</label>
-          <input type="text" id="model" placeholder="e.g., Perkins 100kVA" />
+          <label for="model">Model / Power Rating</label>
+          <input type="text" id="model" placeholder="e.g., Perkins 100kVA or 1.5HP AC" />
         </div>
       </div>
 
@@ -876,7 +956,7 @@
                     `*Phone:* ${phone}%0A` +
                     `*Email:* ${email}%0A` +
                     `*Service Required:* ${service}%0A` +
-                    `*Generator Model/Rating:* ${model}%0A` +
+                    `*Model/Rating:* ${model}%0A` +
                     `*Location:* ${location}%0A%0A` +
                     `*Project Details:*%0A${details}`;
 
