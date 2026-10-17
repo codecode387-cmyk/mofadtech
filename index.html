@@ -63,11 +63,11 @@
     position: absolute; inset: 0; width: 100%; height: 100%;
     object-fit: cover; z-index: 0;
     opacity: 0; transition: opacity 1.5s ease-in-out;
-    pointer-events: none; /* Prevents clicks on video */
+    pointer-events: none;
   }
   .hero-video.loaded { opacity: 1; }
   
-  /* REDUCED OVERLAY OPACITY SO VIDEO IS MORE VISIBLE */
+  /* Reduced Overlay Opacity */
   .hero-overlay {
     position: absolute; inset: 0; z-index: 1;
     background: linear-gradient(115deg, rgba(8,45,114,0.65) 0%, rgba(8,45,114,0.45) 55%, rgba(18,74,156,0.3) 100%);
@@ -130,6 +130,15 @@
   .why-list svg{flex-shrink:0;color:#ff9aa3;margin-top:3px}
   .why-list li strong { color: #fff; }
 
+  /* REVIEWS */
+  .review-card { background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: var(--shadow); position: relative; border: 1px solid var(--line); }
+  .review-stars { display: flex; gap: 4px; margin-bottom: 16px; color: #fbbf24; }
+  .review-text { font-style: italic; color: var(--muted); margin-bottom: 20px; font-size: 0.95rem; }
+  .review-author { display: flex; align-items: center; gap: 12px; }
+  .review-avatar { width: 45px; height: 45px; background: var(--navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: bold; font-size: 1.1rem; }
+  .review-info h4 { margin: 0; font-size: 0.9rem; color: var(--navy); }
+  .review-info p { margin: 0; font-size: 0.8rem; color: var(--muted); }
+
   /* CONTACT */
   .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
   .contact-item{display:flex;gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}
@@ -147,6 +156,35 @@
     border-radius:18px;padding:40px;text-align:center;
     border:1px solid rgba(255,255,255,0.8);
     box-shadow:0 8px 32px rgba(31, 38, 135, 0.05);
+  }
+
+  /* FLOATING WHATSAPP */
+  .floating-wa {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25D366;
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    z-index: 99;
+    transition: all 0.3s ease;
+    animation: pulse-wa 2s infinite;
+  }
+  .floating-wa:hover {
+    background-color: #1ebe57;
+    transform: scale(1.1);
+    animation: none;
+  }
+  @keyframes pulse-wa {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
   }
 
   /* FOOTER */
@@ -176,18 +214,8 @@
   .required{color:var(--accent)}
 
   /* SCROLL ANIMATIONS */
-  .reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-    will-change: opacity, transform;
-  }
-  .reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  /* Staggered delays for grid items */
+  .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); will-change: opacity, transform; }
+  .reveal.active { opacity: 1; transform: translateY(0); }
   .reveal-delay-1 { transition-delay: 0.1s; }
   .reveal-delay-2 { transition-delay: 0.2s; }
   .reveal-delay-3 { transition-delay: 0.3s; }
@@ -202,18 +230,14 @@
     .foot-grid{grid-template-columns:1fr 1fr;gap:32px}
     .trust .wrap{grid-template-columns:1fr 1fr}
     .hero { min-height: 70vh; }
+    .floating-wa { bottom: 20px; right: 20px; width: 55px; height: 55px; }
   }
   @media(max-width:820px){
     .navlinks,.nav-phone,.nav-right .btn{display:none}
     .burger{display:block}
     .hero .wrap{padding-top:70px;padding-bottom:80px}
     section.block{padding:64px 0}
-    
-    /* MOBILE FIX FOR WHY CHOOSE US SECTION */
-    .why-grid {
-      grid-template-columns: 1fr !important;
-      gap: 32px !important;
-    }
+    .why-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
   }
   @media(max-width:560px){
     .grid-3,.grid-4,.grid-2{grid-template-columns:1fr}
@@ -223,11 +247,16 @@
     .gen-actions{flex-direction:column}
     .hero-actions .btn{flex:1;justify-content:center}
     .modal-content{padding:24px}
-    .hero { min-height: 80vh; } /* Ensures good height on narrow phones */
+    .hero { min-height: 80vh; }
   }
 </style>
 </head>
 <body>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/2349047165669?text=Hello%20Mofad%20Technologies%2C%20I%20would%20like%20to%20make%20an%20enquiry." target="_blank" rel="noopener" class="floating-wa" aria-label="Chat on WhatsApp">
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2s-.8 1-1 1.2c-.2.2-.4.3-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>
+</a>
 
 <!-- NAV -->
 <header>
@@ -240,8 +269,8 @@
       <li><a href="#about">About Us</a></li>
       <li><a href="#generators">Generators</a></li>
       <li><a href="#services">Services</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact Us</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-right">
       <a href="tel:+2349047165669" class="nav-phone">
@@ -259,7 +288,7 @@
     <a href="#about" onclick="document.getElementById('mobileMenu').classList.remove('open')">About Us</a>
     <a href="#generators" onclick="document.getElementById('mobileMenu').classList.remove('open')">Generators</a>
     <a href="#services" onclick="document.getElementById('mobileMenu').classList.remove('open')">Services</a>
-    <a href="#projects" onclick="document.getElementById('mobileMenu').classList.remove('open')">Projects</a>
+    <a href="#reviews" onclick="document.getElementById('mobileMenu').classList.remove('open')">Reviews</a>
     <a href="#contact" onclick="document.getElementById('mobileMenu').classList.remove('open')">Contact Us</a>
     <button class="btn btn-accent" onclick="document.getElementById('mobileMenu').classList.remove('open'); openModal();">Get a Quote</button>
   </div>
@@ -267,12 +296,11 @@
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <!-- Background Video (Muted & Playsinline for Mobile Support) -->
-  <video class="hero-video" id="bgVideo" autoplay loop muted playsinline webkit-playsinline preload="auto">
+  <!-- Background Video -->
+  <video class="hero-video" id="bgVideo" autoplay loop muted playsinline webkit-playsinline preload="auto" poster="perkins-blue.jpg">
     <source src="hero-bg.mp4" type="video/mp4">
   </video>
   
-  <!-- Gradient Overlay (Reduced Opacity for better visibility) -->
   <div class="hero-overlay"></div>
   
   <div class="wrap">
@@ -317,8 +345,30 @@
   </div>
 </section>
 
+<!-- WHY WE ARE THE BEST -->
+<section class="block mist" id="best">
+  <div class="wrap">
+    <div class="intro-grid" style="grid-template-columns: 1fr 1.05fr;">
+      <div class="intro-img reveal">
+        <img src="fg-wilson-closed.jpg" alt="Mofad Technologies reliable generator installation" loading="lazy" />
+      </div>
+      <div class="reveal reveal-delay-1">
+        <p class="eyebrow">Why We Are The Best</p>
+        <h2 style="font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:800">Unmatched Expertise & Quality</h2>
+        <p style="color:var(--muted);margin-top:16px">At Mofad Technologies, we don't just sell generators; we provide complete power solutions. Our commitment to excellence is why we stand out as a leading choice in Lagos and across Nigeria.</p>
+        <ul class="why-list" style="margin-top:20px; color:var(--muted);">
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Genuine Perkins Parts:</strong> We only use authentic parts to guarantee the longevity of your equipment.</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Highly Trained Team:</strong> Our technicians undergo rigorous training to handle complex industrial power setups.</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Comprehensive Warranty:</strong> We stand by our work. Our installations and products are fully backed by warranties.</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Rapid Response:</strong> When you have a downtime emergency, our team is ready to respond swiftly.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- SERVICES -->
-<section class="block mist" id="services">
+<section class="block" id="services">
   <div class="wrap">
     <div class="sec-head reveal">
       <p class="eyebrow">Our Services</p>
@@ -351,7 +401,7 @@
 </section>
 
 <!-- GENERATORS / PRODUCTS -->
-<section class="block" id="generators">
+<section class="block mist" id="generators">
   <div class="wrap">
     <div class="sec-head reveal">
       <p class="eyebrow">Our Products & Setups</p>
@@ -359,7 +409,6 @@
       <p>We supply reliable generator sets, inverters, and solar solutions tailored to your power requirements. All products come with a warranty.</p>
     </div>
     <div class="grid grid-3">
-      <!-- Card 1 -->
       <div class="gen-card reveal">
         <div class="gen-img"><img src="perkins-blue.jpg" alt="Perkins Diesel Generator - Open Type" /></div>
         <div class="gen-body">
@@ -370,7 +419,6 @@
           </div>
         </div>
       </div>
-      <!-- Card 2 -->
       <div class="gen-card reveal reveal-delay-1">
         <div class="gen-img"><img src="fg-wilson-closed.jpg" alt="Enclosed FG Wilson Generator" /></div>
         <div class="gen-body">
@@ -381,7 +429,6 @@
           </div>
         </div>
       </div>
-      <!-- Card 3 -->
       <div class="gen-card reveal reveal-delay-2">
         <div class="gen-img"><img src="perkins-internal.jpg" alt="Perkins Engine Internal View" /></div>
         <div class="gen-body">
@@ -392,7 +439,6 @@
           </div>
         </div>
       </div>
-      <!-- Card 4 -->
       <div class="gen-card reveal">
         <div class="gen-img"><img src="inverter-setup.jpg" alt="Inverter and Battery Setup" /></div>
         <div class="gen-body">
@@ -403,7 +449,6 @@
           </div>
         </div>
       </div>
-      <!-- Card 5 -->
       <div class="gen-card reveal reveal-delay-1">
         <div class="gen-img"><img src="solar-batteries.jpg" alt="Solar Panels and Battery Storage" /></div>
         <div class="gen-body">
@@ -418,7 +463,7 @@
   </div>
 </section>
 
-<!-- WHY CHOOSE -->
+<!-- WHY CHOOSE US -->
 <section class="block navy">
   <div class="wrap">
     <div class="why-grid" style="display:grid; grid-template-columns:1fr 1.1fr; gap:44px; align-items:center;">
@@ -437,30 +482,74 @@
   </div>
 </section>
 
-<!-- PROJECTS -->
-<section class="block mist" id="projects">
+<!-- CUSTOMER REVIEWS -->
+<section class="block" id="reviews">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="eyebrow">Projects</p>
-      <h2>Our work</h2>
-      <p>Installations, servicing and maintenance work across Lagos and Nigeria.</p>
+    <div class="sec-head reveal" style="text-align:center; margin:0 auto;">
+      <p class="eyebrow">Testimonials</p>
+      <h2>What Our Customers Say</h2>
+      <p>Don't just take our word for it. Here is what businesses and homeowners say about our services.</p>
     </div>
     <div class="grid grid-3">
-      <div class="gen-card reveal" style="height:300px">
-        <div class="gen-img" style="height:100%"><img src="fg-wilson-closed.jpg" alt="Project Installation" style="object-fit:cover"></div>
+      <div class="review-card reveal">
+        <div class="review-stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-text">"Mofad Technologies installed a 100kVA Perkins generator for our factory. Their engineers were highly professional, and the installation was seamless. The warranty gives us great peace of mind."</p>
+        <div class="review-author">
+          <div class="review-avatar">AO</div>
+          <div class="review-info">
+            <h4>Adebayo O.</h4>
+            <p>Factory Manager, Lagos</p>
+          </div>
+        </div>
       </div>
-      <div class="gen-card reveal reveal-delay-1" style="height:300px">
-        <div class="gen-img" style="height:100%"><img src="inverter-setup.jpg" alt="Project Inverter" style="object-fit:cover"></div>
+
+      <div class="review-card reveal reveal-delay-1">
+        <div class="review-stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-text">"Our office generator broke down suddenly. I called Mofad and their response team was at our site the same day. They fixed the issue and did a full service. Highly recommended!"</p>
+        <div class="review-author">
+          <div class="review-avatar">CE</div>
+          <div class="review-info">
+            <h4>Chioma E.</h4>
+            <p>Operations Lead, Ikeja</p>
+          </div>
+        </div>
       </div>
-      <div class="gen-card reveal reveal-delay-2" style="height:300px">
-        <div class="gen-img" style="height:100%"><img src="perkins-internal.jpg" alt="Project Maintenance" style="object-fit:cover"></div>
+
+      <div class="review-card reveal reveal-delay-2">
+        <div class="review-stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-text">"I bought an inverter and solar setup for my home from them. Their engineers explained everything clearly and the installation is very neat. It's been 6 months with zero issues."</p>
+        <div class="review-author">
+          <div class="review-avatar">SM</div>
+          <div class="review-info">
+            <h4>Samuel M.</h4>
+            <p>Homeowner, Lekki</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section class="block" id="contact">
+<section class="block mist" id="contact">
   <div class="wrap">
     <div class="sec-head reveal" style="margin-bottom:44px">
       <p class="eyebrow">Get in Touch</p>
@@ -515,7 +604,7 @@
         <h4>Company</h4>
         <ul>
           <li><a href="#about">About Us</a></li>
-          <li><a href="#projects">Projects</a></li>
+          <li><a href="#reviews">Reviews</a></li>
           <li><a href="#contact">Contact Us</a></li>
           <li><a href="#" onclick="openModal(); return false;">Get a Quote</a></li>
         </ul>
@@ -608,27 +697,42 @@
   // Year
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // --- VIDEO BACKGROUND LOGIC (Mobile Optimized) ---
+  // --- MOBILE VIDEO FIX LOGIC ---
   const video = document.getElementById('bgVideo');
   
-  // Force video to play immediately for mobile devices
-  const playVideo = () => {
-    video.play().then(() => {
-      video.classList.add('loaded');
-    }).catch(e => {
-      console.log("Autoplay blocked, user interaction required:", e);
-      // If autoplay is completely blocked, show a fallback background image or just play the gradient
-      // However, because it's muted and playsinline, most modern mobile browsers will allow it.
-    });
+  // Force mute and play
+  const forcePlay = () => {
+    video.muted = true; // Extra guarantee it's muted for mobile autoplay policies
+    const playPromise = video.play();
+    
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        // Video started playing
+        video.classList.add('loaded');
+      }).catch(error => {
+        // Autoplay was prevented. 
+        console.log("Autoplay prevented by browser. Waiting for user interaction.");
+        
+        // Fallback: Try playing on the first interaction (touch or click)
+        const playOnInteraction = () => {
+          video.play().then(() => {
+            video.classList.add('loaded');
+            document.removeEventListener('touchstart', playOnInteraction);
+            document.removeEventListener('click', playOnInteraction);
+          }).catch(e => console.log("Still cannot play:", e));
+        };
+        
+        document.addEventListener('touchstart', playOnInteraction, { once: true });
+        document.addEventListener('click', playOnInteraction, { once: true });
+      });
+    }
   };
 
-  // Try playing when data is loaded
-  video.addEventListener('loadeddata', playVideo);
-  // Try playing when page loads (just in case)
-  window.addEventListener('load', playVideo);
-  // Also handle if the browser pauses it for any reason when the page comes back into focus
-  document.addEventListener('visibilitychange', () => {
-    if (!document.hidden) playVideo();
+  // Run on load
+  window.addEventListener('load', forcePlay);
+  // Run in case of data loaded early
+  video.addEventListener('loadeddata', () => {
+      if (video.paused) forcePlay();
   });
 
   // --- MODAL LOGIC ---
@@ -636,7 +740,7 @@
   
   function openModal() {
     modal.classList.add('open');
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    document.body.style.overflow = 'hidden';
   }
 
   function closeModal() {
@@ -644,7 +748,6 @@
     document.body.style.overflow = '';
   }
 
-  // Close modal when clicking outside
   modal.addEventListener('click', (e) => {
     if (e.target === modal) {
       closeModal();
@@ -655,7 +758,6 @@
   document.getElementById('whatsappForm').addEventListener('submit', function(e) {
     e.preventDefault();
 
-    // Get values
     const name = document.getElementById('name').value;
     const phone = document.getElementById('phone').value;
     const email = document.getElementById('email').value || 'N/A';
@@ -664,7 +766,6 @@
     const location = document.getElementById('location').value;
     const details = document.getElementById('details').value || 'No additional details provided.';
 
-    // Construct the message
     const message = `*New Quote Request - Mofad Technologies*%0A%0A` +
                     `*Name:* ${name}%0A` +
                     `*Phone:* ${phone}%0A` +
@@ -674,14 +775,10 @@
                     `*Location:* ${location}%0A%0A` +
                     `*Project Details:*%0A${details}`;
 
-    // WhatsApp URL (09047165669 international format is 2349047165669)
     const waNumber = '2349047165669';
     const waUrl = `https://wa.me/${waNumber}?text=${message}`;
 
-    // Open WhatsApp
     window.open(waUrl, '_blank');
-    
-    // Close modal and reset form
     closeModal();
     this.reset();
   });
@@ -690,8 +787,8 @@
   const revealElements = document.querySelectorAll('.reveal');
 
   const revealOptions = {
-    threshold: 0.15, // Trigger when 15% of the element is visible
-    rootMargin: "0px 0px -50px 0px" // Trigger slightly before it hits the viewport bottom
+    threshold: 0.15,
+    rootMargin: "0px 0px -50px 0px"
   };
 
   const revealOnScroll = new IntersectionObserver(function(entries, observer) {
@@ -700,7 +797,7 @@
         return;
       } else {
         entry.target.classList.add('active');
-        observer.unobserve(entry.target); // Stop observing once it has animated in
+        observer.unobserve(entry.target);
       }
     });
   }, revealOptions);
