@@ -98,7 +98,6 @@
   .grid-2{grid-template-columns:repeat(2,1fr)}
   .grid-3{grid-template-columns:repeat(3,1fr)}
   .grid-4{grid-template-columns:repeat(4,1fr)}
-  .grid-5{grid-template-columns:repeat(5,1fr)}
 
   /* GLASSMORPHISM CARDS */
   .card{background:rgba(255,255,255,0.7);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:var(--radius);padding:28px;box-shadow:0 8px 32px rgba(31, 38, 135, 0.07);border:1px solid rgba(255,255,255,0.8);transition:all .3s ease}
@@ -156,7 +155,34 @@
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   }
 
-  /* TOP CUSTOMERS */
+  /* TOP CUSTOMERS MARQUEE */
+  .customer-marquee-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin-top: 44px;
+    /* Creates a soft white fade on the edges */
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+
+  .customer-marquee-track {
+    display: flex;
+    gap: 24px;
+    width: max-content;
+    /* Animates from right to left */
+    animation: scroll-left 30s linear infinite;
+  }
+
+  .customer-marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 12px)); } /* Moves half the width + half the gap */
+  }
+
   .customer-logo-box {
     background: #fff;
     border-radius: var(--radius);
@@ -168,21 +194,20 @@
     border: 1px solid var(--line);
     transition: all 0.3s ease;
     height: 120px;
+    width: 240px; /* Fixed width for consistent scrolling */
+    flex-shrink: 0;
   }
+
   .customer-logo-box:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 35px rgba(8,45,114,.12);
   }
+
   .customer-logo-box img {
     max-height: 70px;
     max-width: 100%;
     object-fit: contain;
-    filter: grayscale(100%) opacity(0.7);
-    transition: all 0.3s ease;
-  }
-  .customer-logo-box:hover img {
-    filter: grayscale(0%) opacity(1);
-    transform: scale(1.05);
+    /* Colored logos: removed grayscale */
   }
 
   /* REVIEWS */
@@ -284,7 +309,6 @@
   @media(max-width:960px){
     .grid-4{grid-template-columns:repeat(2,1fr)}
     .grid-3{grid-template-columns:repeat(2,1fr)}
-    .grid-5{grid-template-columns:repeat(3,1fr)}
     .intro-grid{grid-template-columns:1fr;gap:32px}
     .contact-grid{grid-template-columns:1fr}
     .foot-grid{grid-template-columns:1fr 1fr;gap:32px}
@@ -309,7 +333,7 @@
     .best-grid .intro-img { min-height: 250px !important; max-height: 300px !important; }
   }
   @media(max-width:560px){
-    .grid-3,.grid-4,.grid-5,.grid-2{grid-template-columns:1fr}
+    .grid-3,.grid-4,.grid-2{grid-template-columns:1fr}
     .field-row{grid-template-columns:1fr}
     .foot-grid{grid-template-columns:1fr}
     .trust .wrap{grid-template-columns:1fr}
@@ -319,7 +343,7 @@
     .hero { min-height: 80vh; }
     .best-grid { gap: 20px !important; }
     .best-grid .intro-img { min-height: 200px !important; max-height: 250px !important; }
-    .customer-logo-box { height: 100px; padding: 18px; }
+    .customer-logo-box { height: 100px; padding: 18px; width: 200px; }
     .customer-logo-box img { max-height: 55px; }
   }
 </style>
@@ -529,7 +553,7 @@
   </div>
 </section>
 
-<!-- TOP CUSTOMERS SECTION -->
+<!-- TOP CUSTOMERS SECTION (MARQUEE) -->
 <section class="block" id="customers">
   <div class="wrap">
     <div class="sec-head reveal" style="text-align:center; margin:0 auto;">
@@ -537,21 +561,42 @@
       <h2>Customers We've Worked With</h2>
       <p>From government agencies to hotels and corporate offices — we've powered them all.</p>
     </div>
+  </div>
 
-    <div class="grid grid-5 customer-grid">
-      <div class="customer-logo-box reveal">
+  <!-- Marquee Wrapper (Outside the .wrap to allow full-width scroll) -->
+  <div class="customer-marquee-wrapper reveal">
+    <div class="customer-marquee-track">
+      <!-- First Set of Logos -->
+      <div class="customer-logo-box">
         <img src="customer-stachella.png" alt="Stachella Resources Limited" loading="lazy" />
       </div>
-      <div class="customer-logo-box reveal reveal-delay-1">
+      <div class="customer-logo-box">
         <img src="customer-lagos-health.png" alt="Lagos State Ministry of Health" loading="lazy" />
       </div>
-      <div class="customer-logo-box reveal reveal-delay-2">
+      <div class="customer-logo-box">
         <img src="customer-abiis.png" alt="ABIIs Hotel & Suites" loading="lazy" />
       </div>
-      <div class="customer-logo-box reveal reveal-delay-3">
+      <div class="customer-logo-box">
         <img src="customer-headquarters.png" alt="The Headquarters" loading="lazy" />
       </div>
-      <div class="customer-logo-box reveal reveal-delay-4">
+      <div class="customer-logo-box">
+        <img src="customer-crown.png" alt="Crown Interactive" loading="lazy" />
+      </div>
+
+      <!-- Second Set of Logos (Duplicate for infinite seamless loop) -->
+      <div class="customer-logo-box">
+        <img src="customer-stachella.png" alt="Stachella Resources Limited" loading="lazy" />
+      </div>
+      <div class="customer-logo-box">
+        <img src="customer-lagos-health.png" alt="Lagos State Ministry of Health" loading="lazy" />
+      </div>
+      <div class="customer-logo-box">
+        <img src="customer-abiis.png" alt="ABIIs Hotel & Suites" loading="lazy" />
+      </div>
+      <div class="customer-logo-box">
+        <img src="customer-headquarters.png" alt="The Headquarters" loading="lazy" />
+      </div>
+      <div class="customer-logo-box">
         <img src="customer-crown.png" alt="Crown Interactive" loading="lazy" />
       </div>
     </div>
