@@ -256,7 +256,16 @@
     .burger{display:block}
     .hero .wrap{padding-top:70px;padding-bottom:80px}
     section.block{padding:64px 0}
+    
+    /* FIX FOR WHY CHOOSE US GRID */
     .why-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+    
+    /* FIX FOR WHY WE ARE THE BEST GRID */
+    .best-grid { 
+      grid-template-columns: 1fr !important; 
+      gap: 24px !important; 
+    }
+    .best-grid .intro-img { min-height: 250px !important; max-height: 300px !important; }
   }
   @media(max-width:560px){
     .grid-3,.grid-4,.grid-2{grid-template-columns:1fr}
@@ -267,6 +276,8 @@
     .hero-actions .btn{flex:1;justify-content:center}
     .modal-content{padding:24px}
     .hero { min-height: 80vh; }
+    .best-grid { gap: 20px !important; }
+    .best-grid .intro-img { min-height: 200px !important; max-height: 250px !important; }
   }
 </style>
 </head>
@@ -364,10 +375,10 @@
   </div>
 </section>
 
-<!-- WHY WE ARE THE BEST (FIXED VISIBILITY) -->
+<!-- WHY WE ARE THE BEST (FIXED MOBILE LAYOUT) -->
 <section class="block mist" id="best">
   <div class="wrap">
-    <div class="intro-grid" style="grid-template-columns: 1fr 1.05fr;">
+    <div class="intro-grid best-grid">
       <div class="intro-img reveal">
         <img src="fg-wilson-closed.jpg" alt="Mofad Technologies reliable generator installation" loading="lazy" />
       </div>
@@ -482,7 +493,7 @@
   </div>
 </section>
 
-<!-- WHY CHOOSE US (REBUILT & VISIBLE) -->
+<!-- WHY CHOOSE US -->
 <section class="block navy" id="why-us">
   <div class="wrap">
     <div class="why-grid" style="display:grid; grid-template-columns:1fr 1.1fr; gap:44px; align-items:center;">
@@ -800,7 +811,6 @@
   // This ensures that the VERY FIRST tap anywhere on the screen forces the video to start.
   document.body.addEventListener('touchstart', function initVideo() {
     playVideo();
-    // Remove listener after it plays
     document.body.removeEventListener('touchstart', initVideo);
   }, { once: true });
 
