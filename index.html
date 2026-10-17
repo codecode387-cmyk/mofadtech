@@ -878,29 +878,41 @@
     }
   });
 
-  // --- WHATSAPP FORM SUBMISSION ---
+  // --- WHATSAPP FORM SUBMISSION (FIXED) ---
   document.getElementById('whatsappForm').addEventListener('submit', function(e) {
     e.preventDefault();
 
-    const name = document.getElementById('name').value;
-    const phone = document.getElementById('phone').value;
-    const email = document.getElementById('email').value || 'N/A';
+    // Gather and trim all values
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const email = document.getElementById('email').value.trim() || 'N/A';
     const service = document.getElementById('service').value;
-    const model = document.getElementById('model').value || 'N/A';
-    const location = document.getElementById('location').value;
-    const details = document.getElementById('details').value || 'No additional details provided.';
+    const model = document.getElementById('model').value.trim() || 'N/A';
+    const location = document.getElementById('location').value.trim();
+    const details = document.getElementById('details').value.trim() || 'No additional details provided.';
 
-    const message = `*New Quote Request - Mofad Technologies*%0A%0A` +
-                    `*Name:* ${name}%0A` +
-                    `*Phone:* ${phone}%0A` +
-                    `*Email:* ${email}%0A` +
-                    `*Service Required:* ${service}%0A` +
-                    `*Model/Rating:* ${model}%0A` +
-                    `*Location:* ${location}%0A%0A` +
-                    `*Project Details:*%0A${details}`;
+    // Build the message using an array of lines (cleaner & safer)
+    const messageLines = [
+      '*New Quote Request - Mofad Technologies*',
+      '',
+      '*Name:* ' + name,
+      '*Phone:* ' + phone,
+      '*Email:* ' + email,
+      '*Service Required:* ' + service,
+      '*Model/Rating:* ' + model,
+      '*Location:* ' + location,
+      '',
+      '*Project Details:*',
+      details
+    ];
+
+    // Join with real newlines, then encode the ENTIRE message once.
+    // encodeURIComponent handles &, #, +, %, and newlines correctly.
+    const rawMessage = messageLines.join('\n');
+    const encodedMessage = encodeURIComponent(rawMessage);
 
     const waNumber = '2349047165669';
-    const waUrl = `https://wa.me/${waNumber}?text=${message}`;
+    const waUrl = 'https://wa.me/' + waNumber + '?text=' + encodedMessage;
 
     window.open(waUrl, '_blank');
     closeModal();
