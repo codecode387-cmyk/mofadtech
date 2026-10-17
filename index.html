@@ -8,6 +8,10 @@
 <meta property="og:title" content="Mofad Technologies — Reliable Power. Lasting Solutions." />
 <meta property="og:description" content="Perkins diesel generator sales, installation, repair and maintenance across Nigeria." />
 <meta property="og:type" content="website" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="favicon.png" />
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -19,7 +23,7 @@
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{margin:0;font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+  body{margin:0;font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased; overflow-x:hidden;}
   img{max-width:100%;display:block}
   a{color:inherit;text-decoration:none}
   h1,h2,h3{line-height:1.2;margin:0;color:var(--navy)}
@@ -30,13 +34,13 @@
   .btn-accent:hover{background:#c4141f;transform:translateY(-1px)}
   .btn-primary{background:var(--brand);color:#fff}
   .btn-primary:hover{background:var(--navy)}
-  .btn-outline{background:transparent;border:1.5px solid rgba(255,255,255,.35);color:#fff}
-  .btn-outline:hover{background:rgba(255,255,255,.1)}
+  .btn-outline{background:rgba(255,255,255,0.1);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);border:1.5px solid rgba(255,255,255,.35);color:#fff}
+  .btn-outline:hover{background:rgba(255,255,255,.25)}
   .btn-navy{background:transparent;border:1.5px solid var(--navy);color:var(--navy)}
   .btn-navy:hover{background:var(--navy);color:#fff}
 
-  /* NAV */
-  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  /* NAV - Glass Effect */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.75);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.3)}
   nav{display:flex;align-items:center;justify-content:space-between;height:70px}
   .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.2rem;color:var(--navy)}
   .logo img{height:36px;width:auto;border-radius:4px;}
@@ -47,26 +51,32 @@
   .nav-phone{display:flex;align-items:center;gap:7px;font-size:.9rem;font-weight:600;color:var(--navy)}
   .nav-phone:hover{color:var(--brand)}
   .burger{display:none;background:none;border:0;cursor:pointer;color:var(--navy);padding:6px}
-  .mobile-menu{display:none;border-top:1px solid var(--line);background:#fff;padding:14px 22px 22px}
+  .mobile-menu{display:none;border-top:1px solid var(--line);background:rgba(255,255,255,.95);backdrop-filter:blur(12px);padding:14px 22px 22px}
   .mobile-menu.open{display:block}
   .mobile-menu a{display:block;padding:11px 12px;border-radius:8px;font-weight:500;color:#334155;font-size:.95rem}
   .mobile-menu a:hover{background:var(--mist)}
   .mobile-menu .btn{width:100%;justify-content:center;margin-top:10px}
 
-  /* HERO */
-  .hero{position:relative;background:var(--navy);color:#fff;overflow:hidden}
-  .hero::before{content:"";position:absolute;inset:0;background:
-    linear-gradient(115deg,rgba(8,45,114,.96) 0%,rgba(8,45,114,.82) 55%,rgba(18,74,156,.6) 100%),
-    url('https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1920&q=80') center/cover;
+  /* HERO - Video Background */
+  .hero{position:relative;background:var(--navy);color:#fff;overflow:hidden; display:flex; align-items:center; min-height: 85vh;}
+  .hero-video {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; z-index: 0;
+    opacity: 0; transition: opacity 1.5s ease-in-out;
   }
-  .hero .wrap{position:relative;padding-top:96px;padding-bottom:110px}
+  .hero-video.loaded { opacity: 1; }
+  .hero-overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(115deg, rgba(8,45,114,0.92) 0%, rgba(8,45,114,0.75) 55%, rgba(18,74,156,0.6) 100%);
+  }
+  .hero .wrap{position:relative; z-index: 2; width:100%; padding-top:96px; padding-bottom:110px}
   .hero .eyebrow{color:#ff9aa3}
   .hero h1{color:#fff;font-size:clamp(2.1rem,5vw,3.7rem);font-weight:800;max-width:760px;margin-top:6px}
-  .hero p.sub{max-width:640px;font-size:1.12rem;color:#cbd5e1;margin-top:20px}
+  .hero p.sub{max-width:640px;font-size:1.12rem;color:#e2e8f0;margin-top:20px}
   .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
 
-  /* TRUST STRIP */
-  .trust{background:var(--mist);border-bottom:1px solid var(--line)}
+  /* TRUST STRIP - Glass Effect */
+  .trust{background:rgba(243,246,250,0.6);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
   .trust .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding:24px 22px}
   .trust-item{display:flex;align-items:center;gap:11px;font-weight:600;font-size:.92rem;color:var(--navy)}
   .trust-item svg{flex-shrink:0;color:var(--brand)}
@@ -85,21 +95,25 @@
   .grid-3{grid-template-columns:repeat(3,1fr)}
   .grid-4{grid-template-columns:repeat(4,1fr)}
 
-  .card{background:#fff;border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);border:1px solid var(--line);transition:.25s}
-  .card:hover{transform:translateY(-4px)}
-  .card .icon{width:46px;height:46px;border-radius:11px;background:linear-gradient(135deg,var(--brand),var(--navy));display:flex;align-items:center;justify-content:center;color:#fff;margin-bottom:16px}
+  /* GLASSMORPHISM CARDS */
+  .card{background:rgba(255,255,255,0.7);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:var(--radius);padding:28px;box-shadow:0 8px 32px rgba(31, 38, 135, 0.07);border:1px solid rgba(255,255,255,0.8);transition:all .3s ease}
+  .card:hover{transform:translateY(-5px); box-shadow:0 15px 35px rgba(31, 38, 135, 0.15); background:rgba(255,255,255,0.9);}
+  .card .icon{width:46px;height:46px;border-radius:11px;background:linear-gradient(135deg,var(--brand),var(--navy));display:flex;align-items:center;justify-content:center;color:#fff;margin-bottom:16px; box-shadow: 0 4px 15px rgba(18,74,156,0.3);}
   .card h3{font-size:1.05rem;font-weight:700}
   .card p{color:var(--muted);font-size:.92rem;margin-top:8px}
 
   .intro-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;margin-top:0}
-  .intro-img{border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
-  .intro-img img{width:100%;height:400px;object-fit:cover}
+  .intro-img{border-radius:18px;overflow:hidden;box-shadow:var(--shadow); position: relative;}
+  .intro-img::after { content:''; position:absolute; inset:0; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2); border-radius:18px; pointer-events:none; }
+  .intro-img img{width:100%;height:400px;object-fit:cover; transition: transform 0.5s ease;}
+  .intro-img:hover img { transform: scale(1.03); }
 
   /* GENERATOR CARDS */
-  .gen-card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line);display:flex;flex-direction:column;transition:.25s}
-  .gen-card:hover{transform:translateY(-4px)}
-  .gen-img{height:220px;background:var(--mist);display:flex;align-items:center;justify-content:center;overflow:hidden;border-bottom:1px solid var(--line)}
-  .gen-img img{width:100%;height:100%;object-fit:cover;}
+  .gen-card{background:rgba(255,255,255,0.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,0.9);display:flex;flex-direction:column;transition:all .3s ease}
+  .gen-card:hover{transform:translateY(-5px); box-shadow:0 15px 35px rgba(8,45,114,.12);}
+  .gen-img{height:220px;background:var(--mist);display:flex;align-items:center;justify-content:center;overflow:hidden;border-bottom:1px solid var(--line); position:relative;}
+  .gen-img img{width:100%;height:100%;object-fit:cover; transition: transform 0.5s ease;}
+  .gen-card:hover .gen-img img { transform: scale(1.05); }
   .gen-body{padding:20px;display:flex;flex-direction:column;flex:1}
   .gen-body h3{font-size:1.05rem}
   .gen-body p{color:var(--muted);font-size:.88rem;margin-top:6px;flex:1}
@@ -108,8 +122,9 @@
 
   /* WHY LIST */
   .why-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:16px}
-  .why-list li{display:flex;gap:13px;color:#cbd5e1;font-size:.98rem}
+  .why-list li{display:flex;gap:13px;color:#e2e8f0;font-size:.98rem; align-items: flex-start;}
   .why-list svg{flex-shrink:0;color:#ff9aa3;margin-top:3px}
+  .why-list li strong { color: #fff; }
 
   /* CONTACT */
   .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
@@ -118,6 +133,17 @@
   .contact-item h4{margin:0;font-size:.9rem;color:var(--navy)}
   .contact-item a,.contact-item p{margin:2px 0 0;color:var(--muted);font-size:.92rem}
   .contact-item a:hover{color:var(--brand)}
+  
+  /* Glass Contact Box */
+  .glass-box {
+    display:flex;flex-direction:column;justify-content:center;align-items:center;
+    background:rgba(255,255,255,0.5);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    border-radius:18px;padding:40px;text-align:center;
+    border:1px solid rgba(255,255,255,0.8);
+    box-shadow:0 8px 32px rgba(31, 38, 135, 0.05);
+  }
 
   /* FOOTER */
   footer{background:var(--navy);color:#cbd5e1;padding:64px 0 0}
@@ -128,10 +154,10 @@
   .foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding:20px 0;text-align:center;font-size:.8rem;color:#94a3b8}
   .foot-logo{height:40px;margin-bottom:12px;border-radius:4px;}
 
-  /* MODAL */
-  .modal-overlay{position:fixed;inset:0;background:rgba(8,45,114,.6);backdrop-filter:blur(4px);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
+  /* MODAL - Glass Effect */
+  .modal-overlay{position:fixed;inset:0;background:rgba(8,45,114,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
   .modal-overlay.open{display:flex}
-  .modal-content{background:#fff;border-radius:18px;width:100%;max-width:600px;max-height:90vh;overflow-y:auto;padding:34px;box-shadow:0 25px 50px rgba(0,0,0,.25);position:relative;animation:slideUp .3s ease}
+  .modal-content{background:rgba(255,255,255,0.95);border-radius:18px;width:100%;max-width:600px;max-height:90vh;overflow-y:auto;padding:34px;box-shadow:0 25px 50px rgba(0,0,0,.25);position:relative;animation:slideUp .3s ease; border: 1px solid rgba(255,255,255,0.5);}
   @keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
   .modal-close{position:absolute;top:16px;right:16px;background:none;border:0;font-size:1.5rem;cursor:pointer;color:var(--muted)}
   .modal-close:hover{color:var(--accent)}
@@ -139,11 +165,29 @@
   .modal-content p.sub{color:var(--muted);font-size:.9rem;margin:0 0 22px}
   .field{margin-bottom:16px}
   .field label{display:block;font-size:.85rem;font-weight:600;color:#334155;margin-bottom:6px}
-  .field input,.field select,.field textarea{width:100%;padding:11px 14px;border:1px solid #cbd5e1;border-radius:9px;font-size:.92rem;font-family:inherit;color:var(--ink);background:#fff;transition:.15s}
-  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(18,74,156,.15)}
+  .field input,.field select,.field textarea{width:100%;padding:11px 14px;border:1px solid #cbd5e1;border-radius:9px;font-size:.92rem;font-family:inherit;color:var(--ink);background:rgba(255,255,255,0.8);transition:.15s}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(18,74,156,.15); background:#fff;}
   .field textarea{resize:vertical;min-height:90px}
   .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   .required{color:var(--accent)}
+
+  /* SCROLL ANIMATIONS */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Staggered delays for grid items */
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
 
   /* RESPONSIVE */
   @media(max-width:960px){
@@ -153,12 +197,19 @@
     .contact-grid{grid-template-columns:1fr}
     .foot-grid{grid-template-columns:1fr 1fr;gap:32px}
     .trust .wrap{grid-template-columns:1fr 1fr}
+    .hero { min-height: 70vh; }
   }
   @media(max-width:820px){
     .navlinks,.nav-phone,.nav-right .btn{display:none}
     .burger{display:block}
     .hero .wrap{padding-top:70px;padding-bottom:80px}
     section.block{padding:64px 0}
+    
+    /* MOBILE FIX FOR WHY CHOOSE US SECTION */
+    .why-grid {
+      grid-template-columns: 1fr !important;
+      gap: 32px !important;
+    }
   }
   @media(max-width:560px){
     .grid-3,.grid-4,.grid-2{grid-template-columns:1fr}
@@ -168,6 +219,7 @@
     .gen-actions{flex-direction:column}
     .hero-actions .btn{flex:1;justify-content:center}
     .modal-content{padding:24px}
+    .hero { min-height: 80vh; } /* Ensures good height on narrow phones */
   }
 </style>
 </head>
@@ -211,11 +263,19 @@
 
 <!-- HERO -->
 <section class="hero" id="home">
+  <!-- Background Video -->
+  <video class="hero-video" id="bgVideo" autoplay loop muted playsinline preload="auto">
+    <source src="hero-bg.mp4" type="video/mp4">
+  </video>
+  
+  <!-- Gradient Overlay for Text Readability -->
+  <div class="hero-overlay"></div>
+  
   <div class="wrap">
-    <p class="eyebrow">Reliable Power. Lasting Solutions.</p>
-    <h1>Reliable Power Solutions for Your Business.</h1>
-    <p class="sub">From Perkins diesel generator supply to professional installation, repairs and preventive maintenance, Mofad Technologies helps keep your operations powered.</p>
-    <div class="hero-actions">
+    <p class="eyebrow reveal">Reliable Power. Lasting Solutions.</p>
+    <h1 class="reveal reveal-delay-1">Reliable Power Solutions for Your Business.</h1>
+    <p class="sub reveal reveal-delay-2">From Perkins diesel generator supply to professional installation, repairs and preventive maintenance, Mofad Technologies helps keep your operations powered.</p>
+    <div class="hero-actions reveal reveal-delay-3">
       <button class="btn btn-accent" onclick="openModal()">Get a Quote</button>
       <a href="#services" class="btn btn-outline">Explore Our Services</a>
     </div>
@@ -225,10 +285,10 @@
 <!-- TRUST -->
 <div class="trust">
   <div class="wrap">
-    <div class="trust-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Generator Sales & Supply</div>
-    <div class="trust-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Professional Installation</div>
-    <div class="trust-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Repairs & Troubleshooting</div>
-    <div class="trust-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Preventive Maintenance</div>
+    <div class="trust-item reveal"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Generator Sales & Supply</div>
+    <div class="trust-item reveal reveal-delay-1"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Professional Installation</div>
+    <div class="trust-item reveal reveal-delay-2"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Repairs & Troubleshooting</div>
+    <div class="trust-item reveal reveal-delay-3"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Preventive Maintenance</div>
   </div>
 </div>
 
@@ -236,7 +296,7 @@
 <section class="block" id="about">
   <div class="wrap">
     <div class="intro-grid">
-      <div>
+      <div class="reveal">
         <p class="eyebrow">Who We Are</p>
         <h2 style="font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:800">Industrial power support you can rely on</h2>
         <p style="color:var(--muted);margin-top:16px">Mofad Technologies supports reliable power for homes, offices, commercial buildings, hotels, factories and industrial facilities across Lagos and other locations in Nigeria. We supply, install, repair and maintain Perkins diesel generators, and help customers plan the right power solution for their needs.</p>
@@ -246,7 +306,7 @@
           <a href="#services" class="btn btn-navy">Our Services</a>
         </div>
       </div>
-      <div class="intro-img">
+      <div class="intro-img reveal reveal-delay-1">
         <img src="perkins-blue.jpg" alt="Engineers working on an industrial Perkins diesel generator" loading="lazy" />
       </div>
     </div>
@@ -256,28 +316,28 @@
 <!-- SERVICES -->
 <section class="block mist" id="services">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <p class="eyebrow">Our Services</p>
       <h2>Complete generator support</h2>
       <p>From supply to scheduled maintenance, we help you keep power available when you need it.</p>
     </div>
     <div class="grid grid-4">
-      <div class="card">
+      <div class="card reveal">
         <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
         <h3>Generator Sales & Supply</h3>
         <p>Perkins diesel generator solutions matched to your load, site and budget.</p>
       </div>
-      <div class="card">
+      <div class="card reveal reveal-delay-1">
         <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
         <h3>Installation & Commissioning</h3>
         <p>Professional setup and connection planning by qualified experts.</p>
       </div>
-      <div class="card">
+      <div class="card reveal reveal-delay-2">
         <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
         <h3>Repairs & Troubleshooting</h3>
         <p>Fault diagnosis and expert repair for all diesel generator systems.</p>
       </div>
-      <div class="card">
+      <div class="card reveal reveal-delay-3">
         <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
         <h3>Preventive Maintenance</h3>
         <p>Scheduled servicing designed to extend lifespan and reduce downtime.</p>
@@ -289,14 +349,14 @@
 <!-- GENERATORS / PRODUCTS -->
 <section class="block" id="generators">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <p class="eyebrow">Our Products & Setups</p>
       <h2>Perkins & Diesel Generator Solutions</h2>
       <p>We supply reliable generator sets, inverters, and solar solutions tailored to your power requirements. All products come with a warranty.</p>
     </div>
     <div class="grid grid-3">
       <!-- Card 1 -->
-      <div class="gen-card">
+      <div class="gen-card reveal">
         <div class="gen-img"><img src="perkins-blue.jpg" alt="Perkins Diesel Generator - Open Type" /></div>
         <div class="gen-body">
           <h3>Perkins Open Diesel Generator</h3>
@@ -307,7 +367,7 @@
         </div>
       </div>
       <!-- Card 2 -->
-      <div class="gen-card">
+      <div class="gen-card reveal reveal-delay-1">
         <div class="gen-img"><img src="fg-wilson-closed.jpg" alt="Enclosed FG Wilson Generator" /></div>
         <div class="gen-body">
           <h3>FG Wilson Enclosed Generator</h3>
@@ -318,7 +378,7 @@
         </div>
       </div>
       <!-- Card 3 -->
-      <div class="gen-card">
+      <div class="gen-card reveal reveal-delay-2">
         <div class="gen-img"><img src="perkins-internal.jpg" alt="Perkins Engine Internal View" /></div>
         <div class="gen-body">
           <h3>Perkins Engine Internal</h3>
@@ -329,7 +389,7 @@
         </div>
       </div>
       <!-- Card 4 -->
-      <div class="gen-card">
+      <div class="gen-card reveal">
         <div class="gen-img"><img src="inverter-setup.jpg" alt="Inverter and Battery Setup" /></div>
         <div class="gen-body">
           <h3>Inverter & Battery Setup</h3>
@@ -340,7 +400,7 @@
         </div>
       </div>
       <!-- Card 5 -->
-      <div class="gen-card">
+      <div class="gen-card reveal reveal-delay-1">
         <div class="gen-img"><img src="solar-batteries.jpg" alt="Solar Panels and Battery Storage" /></div>
         <div class="gen-body">
           <h3>Solar & Battery Storage</h3>
@@ -357,17 +417,17 @@
 <!-- WHY CHOOSE -->
 <section class="block navy">
   <div class="wrap">
-    <div style="display:grid;grid-template-columns:1fr 1.1fr;gap:44px;align-items:center" class="why-grid">
-      <div>
+    <div class="why-grid" style="display:grid; grid-template-columns:1fr 1.1fr; gap:44px; align-items:center;">
+      <div class="reveal">
         <p class="eyebrow">Why Choose Us</p>
         <h2 style="font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:800">Power solutions built around your operation</h2>
       </div>
-      <ul class="why-list">
-        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <strong>Qualified Engineers:</strong> Our team consists of experts and certified engineers.</li>
-        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <strong>Warranty Assured:</strong> Our products and workmanship come with a warranty.</li>
-        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Generator solutions tailored strictly to customer requirements.</li>
-        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Professional installation and on-site technical support.</li>
-        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Maintenance designed to reduce avoidable downtime.</li>
+      <ul class="why-list reveal reveal-delay-1">
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Qualified Engineers:</strong> Our team consists of experts and certified engineers.</span></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Warranty Assured:</strong> Our products and workmanship come with a warranty.</span></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span>Generator solutions tailored strictly to customer requirements.</span></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span>Professional installation and on-site technical support.</span></li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span>Maintenance designed to reduce avoidable downtime.</span></li>
       </ul>
     </div>
   </div>
@@ -376,19 +436,19 @@
 <!-- PROJECTS -->
 <section class="block mist" id="projects">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head reveal">
       <p class="eyebrow">Projects</p>
       <h2>Our work</h2>
       <p>Installations, servicing and maintenance work across Lagos and Nigeria.</p>
     </div>
     <div class="grid grid-3">
-      <div class="gen-card" style="height:300px">
+      <div class="gen-card reveal" style="height:300px">
         <div class="gen-img" style="height:100%"><img src="fg-wilson-closed.jpg" alt="Project Installation" style="object-fit:cover"></div>
       </div>
-      <div class="gen-card" style="height:300px">
+      <div class="gen-card reveal reveal-delay-1" style="height:300px">
         <div class="gen-img" style="height:100%"><img src="inverter-setup.jpg" alt="Project Inverter" style="object-fit:cover"></div>
       </div>
-      <div class="gen-card" style="height:300px">
+      <div class="gen-card reveal reveal-delay-2" style="height:300px">
         <div class="gen-img" style="height:100%"><img src="perkins-internal.jpg" alt="Project Maintenance" style="object-fit:cover"></div>
       </div>
     </div>
@@ -398,13 +458,13 @@
 <!-- CONTACT -->
 <section class="block" id="contact">
   <div class="wrap">
-    <div class="sec-head" style="margin-bottom:44px">
+    <div class="sec-head reveal" style="margin-bottom:44px">
       <p class="eyebrow">Get in Touch</p>
       <h2>Contact Mofad Technologies</h2>
       <p>Send us your requirements and our team will respond with clear next steps.</p>
     </div>
     <div class="contact-grid">
-      <div>
+      <div class="reveal">
         <div class="contact-item">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           <div><h4>Phone / WhatsApp</h4><a href="tel:+2349047165669">09047165669</a></div>
@@ -427,8 +487,8 @@
         </button>
       </div>
 
-      <!-- Decorative Right Column for Desktop -->
-      <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;background:var(--mist);border-radius:18px;padding:40px;text-align:center;border:1px solid var(--line)">
+      <!-- Decorative Glass Column -->
+      <div class="glass-box reveal reveal-delay-1">
         <h3 style="color:var(--navy);margin-bottom:12px;font-size:1.5rem">Need a reliable power solution?</h3>
         <p style="color:var(--muted);margin-bottom:24px;font-size:1rem">Whether it's a new installation, a repair, or routine maintenance, our qualified engineers are ready to assist you.</p>
         <button class="btn btn-accent" onclick="openModal()" style="font-size:1.1rem;padding:15px 30px">Get Your Free Quote</button>
@@ -544,7 +604,18 @@
   // Year
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Modal Logic
+  // --- VIDEO BACKGROUND LOGIC ---
+  const video = document.getElementById('bgVideo');
+  // Smoothly fade in the video when it starts playing
+  video.addEventListener('playing', () => {
+    video.classList.add('loaded');
+  });
+  // Fallback in case the video can't autoplay immediately (e.g., low power mode)
+  video.addEventListener('canplay', () => {
+    video.play().catch(e => console.log("Video autoplay blocked by browser"));
+  });
+
+  // --- MODAL LOGIC ---
   const modal = document.getElementById('quoteModal');
   
   function openModal() {
@@ -564,7 +635,7 @@
     }
   });
 
-  // WhatsApp Form Submission
+  // --- WHATSAPP FORM SUBMISSION ---
   document.getElementById('whatsappForm').addEventListener('submit', function(e) {
     e.preventDefault();
 
@@ -597,6 +668,29 @@
     // Close modal and reset form
     closeModal();
     this.reset();
+  });
+
+  // --- SCROLL ANIMATION LOGIC ---
+  const revealElements = document.querySelectorAll('.reveal');
+
+  const revealOptions = {
+    threshold: 0.15, // Trigger when 15% of the element is visible
+    rootMargin: "0px 0px -50px 0px" // Trigger slightly before it hits the viewport bottom
+  };
+
+  const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) {
+        return;
+      } else {
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target); // Stop observing once it has animated in
+      }
+    });
+  }, revealOptions);
+
+  revealElements.forEach(el => {
+    revealOnScroll.observe(el);
   });
 </script>
 </body>
