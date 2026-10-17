@@ -155,6 +155,35 @@
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   }
 
+  /* TOP CUSTOMERS */
+  .customer-logo-box {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--line);
+    transition: all 0.3s ease;
+    height: 120px;
+  }
+  .customer-logo-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(8,45,114,.12);
+  }
+  .customer-logo-box img {
+    max-height: 70px;
+    max-width: 100%;
+    object-fit: contain;
+    filter: grayscale(100%) opacity(0.7);
+    transition: all 0.3s ease;
+  }
+  .customer-logo-box:hover img {
+    filter: grayscale(0%) opacity(1);
+    transform: scale(1.05);
+  }
+
   /* REVIEWS */
   .review-card { background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: var(--shadow); position: relative; border: 1px solid var(--line); height: 100%; display: flex; flex-direction: column;}
   .review-stars { display: flex; gap: 4px; margin-bottom: 16px; color: #fbbf24; }
@@ -514,19 +543,8 @@
         </div>
       </div>
 
-      <!-- Television Sets -->
-      <div class="offer-card reveal reveal-delay-2" onclick="openModal()">
-        <div class="offer-img">
-          <img src="tv.png" alt="Television Sets" />
-        </div>
-        <div class="offer-body">
-          <h3>Television Sets</h3>
-          <p>Introducing our branded television sets – TCL, AEON, SYNINX TV-HD ANDROID (FHD/QLED/UHD/UHD SLIM/MINI-LED). Nationwide delivery. Warranty, T & C Apply.</p>
-        </div>
-      </div>
-
       <!-- Air-conditioners -->
-      <div class="offer-card reveal" onclick="openModal()">
+      <div class="offer-card reveal reveal-delay-2" onclick="openModal()">
         <div class="offer-img">
           <img src="split-ac.png" alt="Split Air-Conditioners" />
         </div>
@@ -540,8 +558,34 @@
   </div>
 </section>
 
+<!-- TOP CUSTOMERS SECTION -->
+<section class="block" id="customers">
+  <div class="wrap">
+    <div class="sec-head reveal" style="text-align:center; margin:0 auto 44px auto;">
+      <p class="eyebrow">Our Valued Clients</p>
+      <h2>TOP CUSTOMERS</h2>
+      <p>Guaranteed Satisfaction. We are proud to serve leading brands and institutions across Nigeria.</p>
+    </div>
+    
+    <div class="grid grid-4" style="align-items: center;">
+      <div class="customer-logo-box reveal">
+        <img src="neubelle.png" alt="Neubelle Beauty Hub" />
+      </div>
+      <div class="customer-logo-box reveal reveal-delay-1">
+        <img src="ardova.png" alt="Ardova Plc" />
+      </div>
+      <div class="customer-logo-box reveal reveal-delay-2">
+        <img src="enyo.png" alt="Enyo Retail and Supply Limited" />
+      </div>
+      <div class="customer-logo-box reveal reveal-delay-3">
+        <img src="ebonyi.png" alt="Ebonyi State Government" />
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- WHY WE ARE THE BEST (FIXED MOBILE LAYOUT) -->
-<section class="block" id="best">
+<section class="block mist" id="best">
   <div class="wrap">
     <div class="intro-grid best-grid">
       <div class="intro-img reveal">
@@ -556,61 +600,6 @@
           <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Highly Trained Team:</strong> Our technicians undergo rigorous training to handle complex industrial power setups.</span></li>
           <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Comprehensive Warranty:</strong> We stand by our work. Our installations and products are fully backed by warranties.</span></li>
           <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Rapid Response:</strong> When you have a downtime emergency, our team is ready to respond swiftly.</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section class="block mist" id="services">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="eyebrow">Our Services</p>
-      <h2>Complete generator support</h2>
-      <p>From supply to scheduled maintenance, we help you keep power available when you need it.</p>
-    </div>
-    <div class="grid grid-4">
-      <div class="card reveal">
-        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
-        <h3>Generator Sales & Supply</h3>
-        <p>Perkins diesel generator solutions matched to your load, site and budget.</p>
-      </div>
-      <div class="card reveal reveal-delay-1">
-        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
-        <h3>Installation & Commissioning</h3>
-        <p>Professional setup and connection planning by qualified experts.</p>
-      </div>
-      <div class="card reveal reveal-delay-2">
-        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
-        <h3>Repairs & Troubleshooting</h3>
-        <p>Fault diagnosis and expert repair for all diesel generator systems.</p>
-      </div>
-      <div class="card reveal reveal-delay-3">
-        <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <h3>Preventive Maintenance</h3>
-        <p>Scheduled servicing designed to extend lifespan and reduce downtime.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHY CHOOSE US -->
-<section class="block navy" id="why-us">
-  <div class="wrap">
-    <div class="why-grid" style="display:grid; grid-template-columns:1fr 1.1fr; gap:44px; align-items:center;">
-      <div class="reveal">
-        <p class="eyebrow">Why Choose Us</p>
-        <h2 style="font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:800">Power solutions built around your operation</h2>
-        <p style="color:#cbd5e1; margin-top:16px;">We understand that every business has unique power demands. That's why we don't offer one-size-fits-all solutions. We take the time to assess your load, site, and budget to deliver a system that works perfectly for you.</p>
-      </div>
-      <div class="glass-feature-box reveal reveal-delay-1">
-        <ul class="why-list">
-          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Qualified Engineers:</strong> Our team consists of experts and certified engineers.</span></li>
-          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Warranty Assured:</strong> Our products and workmanship come with a warranty.</span></li>
-          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span>Generator solutions tailored strictly to customer requirements.</span></li>
-          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span>Professional installation and on-site technical support.</span></li>
-          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span>Maintenance designed to reduce avoidable downtime.</span></li>
         </ul>
       </div>
     </div>
@@ -864,7 +853,7 @@
             <option value="Repairs">Generator Repairs</option>
             <option value="Maintenance">Generator Maintenance</option>
             <option value="Inverter/Solar">Inverter / Solar Setup</option>
-            <option value="AC/TV">AC / Television Purchase</option>
+            <option value="AC/TV">AC Purchase/Installation</option>
             <option value="PMS/AGO">PMS/AGO Supplies</option>
             <option value="Other">Other Enquiry</option>
           </select>
