@@ -107,9 +107,9 @@
   .card p{color:var(--muted);font-size:.92rem;margin-top:8px}
 
   .intro-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;margin-top:0}
-  .intro-img{border-radius:18px;overflow:hidden;box-shadow:var(--shadow); position: relative;}
+  .intro-img{border-radius:18px;overflow:hidden;box-shadow:var(--shadow); position: relative; height: 100%; min-height: 300px;}
   .intro-img::after { content:''; position:absolute; inset:0; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2); border-radius:18px; pointer-events:none; }
-  .intro-img img{width:100%;height:400px;object-fit:cover; transition: transform 0.5s ease;}
+  .intro-img img{width:100%;height:100%;object-fit:cover; transition: transform 0.5s ease;}
   .intro-img:hover img { transform: scale(1.03); }
 
   /* GENERATOR CARDS */
@@ -126,16 +126,31 @@
 
   /* WHY LIST */
   .why-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:16px}
-  .why-list li{display:flex;gap:13px;color:#e2e8f0;font-size:.98rem; align-items: flex-start;}
-  .why-list svg{flex-shrink:0;color:#ff9aa3;margin-top:3px}
-  .why-list li strong { color: #fff; }
+  .why-list li{display:flex;gap:13px;color:var(--muted);font-size:.98rem; align-items: flex-start;}
+  .why-list svg{flex-shrink:0;color:var(--accent);margin-top:3px}
+  .why-list li strong { color: var(--navy); }
+
+  /* DARK SECTION WHY CHOOSE US */
+  .navy .why-list li { color: #cbd5e1; }
+  .navy .why-list li strong { color: #fff; }
+
+  /* GLASS BOX for Why Choose Us */
+  .glass-feature-box {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 18px;
+    padding: 34px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  }
 
   /* REVIEWS */
-  .review-card { background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: var(--shadow); position: relative; border: 1px solid var(--line); }
+  .review-card { background: #fff; padding: 30px; border-radius: var(--radius); box-shadow: var(--shadow); position: relative; border: 1px solid var(--line); height: 100%; display: flex; flex-direction: column;}
   .review-stars { display: flex; gap: 4px; margin-bottom: 16px; color: #fbbf24; }
-  .review-text { font-style: italic; color: var(--muted); margin-bottom: 20px; font-size: 0.95rem; }
+  .review-text { font-style: italic; color: var(--muted); margin-bottom: 20px; font-size: 0.95rem; flex: 1;}
   .review-author { display: flex; align-items: center; gap: 12px; }
-  .review-avatar { width: 45px; height: 45px; background: var(--navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: bold; font-size: 1.1rem; }
+  .review-avatar { width: 45px; height: 45px; background: var(--navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: bold; font-size: 1.1rem; flex-shrink: 0;}
   .review-info h4 { margin: 0; font-size: 0.9rem; color: var(--navy); }
   .review-info p { margin: 0; font-size: 0.8rem; color: var(--muted); }
 
@@ -216,10 +231,14 @@
   /* SCROLL ANIMATIONS */
   .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); will-change: opacity, transform; }
   .reveal.active { opacity: 1; transform: translateY(0); }
+  
+  /* Staggered Delays for animations */
   .reveal-delay-1 { transition-delay: 0.1s; }
   .reveal-delay-2 { transition-delay: 0.2s; }
   .reveal-delay-3 { transition-delay: 0.3s; }
   .reveal-delay-4 { transition-delay: 0.4s; }
+  .reveal-delay-5 { transition-delay: 0.5s; }
+  .reveal-delay-6 { transition-delay: 0.6s; }
 
   /* RESPONSIVE */
   @media(max-width:960px){
@@ -345,7 +364,7 @@
   </div>
 </section>
 
-<!-- WHY WE ARE THE BEST -->
+<!-- WHY WE ARE THE BEST (FIXED VISIBILITY) -->
 <section class="block mist" id="best">
   <div class="wrap">
     <div class="intro-grid" style="grid-template-columns: 1fr 1.05fr;">
@@ -356,7 +375,7 @@
         <p class="eyebrow">Why We Are The Best</p>
         <h2 style="font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:800">Unmatched Expertise & Quality</h2>
         <p style="color:var(--muted);margin-top:16px">At Mofad Technologies, we don't just sell generators; we provide complete power solutions. Our commitment to excellence is why we stand out as a leading choice in Lagos and across Nigeria.</p>
-        <ul class="why-list" style="margin-top:20px; color:var(--muted);">
+        <ul class="why-list" style="margin-top:20px;">
           <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Genuine Perkins Parts:</strong> We only use authentic parts to guarantee the longevity of your equipment.</span></li>
           <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Highly Trained Team:</strong> Our technicians undergo rigorous training to handle complex industrial power setups.</span></li>
           <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Comprehensive Warranty:</strong> We stand by our work. Our installations and products are fully backed by warranties.</span></li>
@@ -463,26 +482,29 @@
   </div>
 </section>
 
-<!-- WHY CHOOSE US -->
-<section class="block navy">
+<!-- WHY CHOOSE US (REBUILT & VISIBLE) -->
+<section class="block navy" id="why-us">
   <div class="wrap">
     <div class="why-grid" style="display:grid; grid-template-columns:1fr 1.1fr; gap:44px; align-items:center;">
       <div class="reveal">
         <p class="eyebrow">Why Choose Us</p>
         <h2 style="font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:800">Power solutions built around your operation</h2>
+        <p style="color:#cbd5e1; margin-top:16px;">We understand that every business has unique power demands. That's why we don't offer one-size-fits-all solutions. We take the time to assess your load, site, and budget to deliver a system that works perfectly for you.</p>
       </div>
-      <ul class="why-list reveal reveal-delay-1">
-        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Qualified Engineers:</strong> Our team consists of experts and certified engineers.</span></li>
-        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Warranty Assured:</strong> Our products and workmanship come with a warranty.</span></li>
-        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span>Generator solutions tailored strictly to customer requirements.</span></li>
-        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span>Professional installation and on-site technical support.</span></li>
-        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span>Maintenance designed to reduce avoidable downtime.</span></li>
-      </ul>
+      <div class="glass-feature-box reveal reveal-delay-1">
+        <ul class="why-list">
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Qualified Engineers:</strong> Our team consists of experts and certified engineers.</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Warranty Assured:</strong> Our products and workmanship come with a warranty.</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span>Generator solutions tailored strictly to customer requirements.</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span>Professional installation and on-site technical support.</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span>Maintenance designed to reduce avoidable downtime.</span></li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- CUSTOMER REVIEWS -->
+<!-- CUSTOMER REVIEWS (ANIMATED & 6 TOTAL) -->
 <section class="block" id="reviews">
   <div class="wrap">
     <div class="sec-head reveal" style="text-align:center; margin:0 auto;">
@@ -491,6 +513,7 @@
       <p>Don't just take our word for it. Here is what businesses and homeowners say about our services.</p>
     </div>
     <div class="grid grid-3">
+      <!-- Review 1 -->
       <div class="review-card reveal">
         <div class="review-stars">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -509,6 +532,7 @@
         </div>
       </div>
 
+      <!-- Review 2 -->
       <div class="review-card reveal reveal-delay-1">
         <div class="review-stars">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -527,6 +551,7 @@
         </div>
       </div>
 
+      <!-- Review 3 -->
       <div class="review-card reveal reveal-delay-2">
         <div class="review-stars">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -544,6 +569,64 @@
           </div>
         </div>
       </div>
+      
+      <!-- Review 4 -->
+      <div class="review-card reveal">
+        <div class="review-stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-text">"We contracted Mofad for the maintenance of our hotel generators. Their scheduled servicing has drastically reduced our downtime. Reliable and trustworthy team."</p>
+        <div class="review-author">
+          <div class="review-avatar">FA</div>
+          <div class="review-info">
+            <h4>Fatima A.</h4>
+            <p>Hotel Manager, Victoria Island</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 5 -->
+      <div class="review-card reveal reveal-delay-1">
+        <div class="review-stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-text">"Excellent customer service. I needed a specific Perkins part urgently and they sourced it for me within 48 hours. It's rare to find this level of dedication."</p>
+        <div class="review-author">
+          <div class="review-avatar">TK</div>
+          <div class="review-info">
+            <h4>Tunde K.</h4>
+            <p>Procurement Officer, Apapa</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 6 -->
+      <div class="review-card reveal reveal-delay-2">
+        <div class="review-stars">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-text">"They supplied and installed a 60kVA soundproof generator for our clinic. Very quiet operation and the installation was top-notch. I highly recommend them."</p>
+        <div class="review-author">
+          <div class="review-avatar">NB</div>
+          <div class="review-info">
+            <h4>Dr. Ngozi B.</h4>
+            <p>Clinic Owner, Surulere</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -604,6 +687,7 @@
         <h4>Company</h4>
         <ul>
           <li><a href="#about">About Us</a></li>
+          <li><a href="#best">Why We Are The Best</a></li>
           <li><a href="#reviews">Reviews</a></li>
           <li><a href="#contact">Contact Us</a></li>
           <li><a href="#" onclick="openModal(); return false;">Get a Quote</a></li>
@@ -697,43 +781,29 @@
   // Year
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // --- MOBILE VIDEO FIX LOGIC ---
+  // --- MOBILE VIDEO FORCE PLAY LOGIC ---
   const video = document.getElementById('bgVideo');
   
-  // Force mute and play
-  const forcePlay = () => {
-    video.muted = true; // Extra guarantee it's muted for mobile autoplay policies
-    const playPromise = video.play();
-    
-    if (playPromise !== undefined) {
-      playPromise.then(() => {
-        // Video started playing
-        video.classList.add('loaded');
-      }).catch(error => {
-        // Autoplay was prevented. 
-        console.log("Autoplay prevented by browser. Waiting for user interaction.");
-        
-        // Fallback: Try playing on the first interaction (touch or click)
-        const playOnInteraction = () => {
-          video.play().then(() => {
-            video.classList.add('loaded');
-            document.removeEventListener('touchstart', playOnInteraction);
-            document.removeEventListener('click', playOnInteraction);
-          }).catch(e => console.log("Still cannot play:", e));
-        };
-        
-        document.addEventListener('touchstart', playOnInteraction, { once: true });
-        document.addEventListener('click', playOnInteraction, { once: true });
-      });
-    }
-  };
+  function playVideo() {
+    video.muted = true; // Must be muted for mobile autoplay
+    video.play().then(() => {
+      video.classList.add('loaded'); // Fade in effect
+    }).catch(err => {
+      console.log("Autoplay blocked, waiting for touch.", err);
+    });
+  }
 
-  // Run on load
-  window.addEventListener('load', forcePlay);
-  // Run in case of data loaded early
-  video.addEventListener('loadeddata', () => {
-      if (video.paused) forcePlay();
-  });
+  // Try playing immediately on load
+  window.addEventListener('load', playVideo);
+  
+  // Some mobile browsers wait for the user to touch the screen to allow ANY media to play.
+  // This ensures that the VERY FIRST tap anywhere on the screen forces the video to start.
+  document.body.addEventListener('touchstart', function initVideo() {
+    playVideo();
+    // Remove listener after it plays
+    document.body.removeEventListener('touchstart', initVideo);
+  }, { once: true });
+
 
   // --- MODAL LOGIC ---
   const modal = document.getElementById('quoteModal');
@@ -787,7 +857,7 @@
   const revealElements = document.querySelectorAll('.reveal');
 
   const revealOptions = {
-    threshold: 0.15,
+    threshold: 0.15, // Trigger when 15% of element is visible
     rootMargin: "0px 0px -50px 0px"
   };
 
