@@ -63,16 +63,20 @@
     position: absolute; inset: 0; width: 100%; height: 100%;
     object-fit: cover; z-index: 0;
     opacity: 0; transition: opacity 1.5s ease-in-out;
+    pointer-events: none; /* Prevents clicks on video */
   }
   .hero-video.loaded { opacity: 1; }
+  
+  /* REDUCED OVERLAY OPACITY SO VIDEO IS MORE VISIBLE */
   .hero-overlay {
     position: absolute; inset: 0; z-index: 1;
-    background: linear-gradient(115deg, rgba(8,45,114,0.92) 0%, rgba(8,45,114,0.75) 55%, rgba(18,74,156,0.6) 100%);
+    background: linear-gradient(115deg, rgba(8,45,114,0.65) 0%, rgba(8,45,114,0.45) 55%, rgba(18,74,156,0.3) 100%);
   }
+  
   .hero .wrap{position:relative; z-index: 2; width:100%; padding-top:96px; padding-bottom:110px}
-  .hero .eyebrow{color:#ff9aa3}
-  .hero h1{color:#fff;font-size:clamp(2.1rem,5vw,3.7rem);font-weight:800;max-width:760px;margin-top:6px}
-  .hero p.sub{max-width:640px;font-size:1.12rem;color:#e2e8f0;margin-top:20px}
+  .hero .eyebrow{color:#ff9aa3; text-shadow: 0 2px 4px rgba(0,0,0,0.5);}
+  .hero h1{color:#fff;font-size:clamp(2.1rem,5vw,3.7rem);font-weight:800;max-width:760px;margin-top:6px; text-shadow: 0 4px 12px rgba(0,0,0,0.4);}
+  .hero p.sub{max-width:640px;font-size:1.12rem;color:#f1f5f9;margin-top:20px; text-shadow: 0 2px 8px rgba(0,0,0,0.5);}
   .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
 
   /* TRUST STRIP - Glass Effect */
@@ -263,12 +267,12 @@
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <!-- Background Video -->
-  <video class="hero-video" id="bgVideo" autoplay loop muted playsinline preload="auto">
+  <!-- Background Video (Muted & Playsinline for Mobile Support) -->
+  <video class="hero-video" id="bgVideo" autoplay loop muted playsinline webkit-playsinline preload="auto">
     <source src="hero-bg.mp4" type="video/mp4">
   </video>
   
-  <!-- Gradient Overlay for Text Readability -->
+  <!-- Gradient Overlay (Reduced Opacity for better visibility) -->
   <div class="hero-overlay"></div>
   
   <div class="wrap">
@@ -604,15 +608,27 @@
   // Year
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // --- VIDEO BACKGROUND LOGIC ---
+  // --- VIDEO BACKGROUND LOGIC (Mobile Optimized) ---
   const video = document.getElementById('bgVideo');
-  // Smoothly fade in the video when it starts playing
-  video.addEventListener('playing', () => {
-    video.classList.add('loaded');
-  });
-  // Fallback in case the video can't autoplay immediately (e.g., low power mode)
-  video.addEventListener('canplay', () => {
-    video.play().catch(e => console.log("Video autoplay blocked by browser"));
+  
+  // Force video to play immediately for mobile devices
+  const playVideo = () => {
+    video.play().then(() => {
+      video.classList.add('loaded');
+    }).catch(e => {
+      console.log("Autoplay blocked, user interaction required:", e);
+      // If autoplay is completely blocked, show a fallback background image or just play the gradient
+      // However, because it's muted and playsinline, most modern mobile browsers will allow it.
+    });
+  };
+
+  // Try playing when data is loaded
+  video.addEventListener('loadeddata', playVideo);
+  // Try playing when page loads (just in case)
+  window.addEventListener('load', playVideo);
+  // Also handle if the browser pauses it for any reason when the page comes back into focus
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) playVideo();
   });
 
   // --- MODAL LOGIC ---
