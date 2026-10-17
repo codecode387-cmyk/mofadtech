@@ -98,6 +98,7 @@
   .grid-2{grid-template-columns:repeat(2,1fr)}
   .grid-3{grid-template-columns:repeat(3,1fr)}
   .grid-4{grid-template-columns:repeat(4,1fr)}
+  .grid-5{grid-template-columns:repeat(5,1fr)}
 
   /* GLASSMORPHISM CARDS */
   .card{background:rgba(255,255,255,0.7);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:var(--radius);padding:28px;box-shadow:0 8px 32px rgba(31, 38, 135, 0.07);border:1px solid rgba(255,255,255,0.8);transition:all .3s ease}
@@ -283,6 +284,7 @@
   @media(max-width:960px){
     .grid-4{grid-template-columns:repeat(2,1fr)}
     .grid-3{grid-template-columns:repeat(2,1fr)}
+    .grid-5{grid-template-columns:repeat(3,1fr)}
     .intro-grid{grid-template-columns:1fr;gap:32px}
     .contact-grid{grid-template-columns:1fr}
     .foot-grid{grid-template-columns:1fr 1fr;gap:32px}
@@ -307,7 +309,7 @@
     .best-grid .intro-img { min-height: 250px !important; max-height: 300px !important; }
   }
   @media(max-width:560px){
-    .grid-3,.grid-4,.grid-2{grid-template-columns:1fr}
+    .grid-3,.grid-4,.grid-5,.grid-2{grid-template-columns:1fr}
     .field-row{grid-template-columns:1fr}
     .foot-grid{grid-template-columns:1fr}
     .trust .wrap{grid-template-columns:1fr}
@@ -317,6 +319,8 @@
     .hero { min-height: 80vh; }
     .best-grid { gap: 20px !important; }
     .best-grid .intro-img { min-height: 200px !important; max-height: 250px !important; }
+    .customer-logo-box { height: 100px; padding: 18px; }
+    .customer-logo-box img { max-height: 55px; }
   }
 </style>
 </head>
@@ -444,8 +448,6 @@
         </div>
       </div>
 
-     
-
       <!-- Generator Supplies 4 -->
       <div class="offer-card reveal" onclick="openModal()">
         <div class="offer-img">
@@ -478,10 +480,6 @@
           <p>Introducing our petrol generating sets from 2kva – 10kva aluminum coil and copper coil. Nationwide delivery and Warranty. Terms and Conditions apply.</p>
         </div>
       </div>
-
-   
-
-    
 
       <!-- Solar Systems -->
       <div class="offer-card reveal reveal-delay-2" onclick="openModal()">
@@ -532,7 +530,33 @@
 </section>
 
 <!-- TOP CUSTOMERS SECTION -->
+<section class="block" id="customers">
+  <div class="wrap">
+    <div class="sec-head reveal" style="text-align:center; margin:0 auto;">
+      <p class="eyebrow">Trusted By</p>
+      <h2>Customers We've Worked With</h2>
+      <p>From government agencies to hotels and corporate offices — we've powered them all.</p>
+    </div>
 
+    <div class="grid grid-5 customer-grid">
+      <div class="customer-logo-box reveal">
+        <img src="customer-stachella.png" alt="Stachella Resources Limited" loading="lazy" />
+      </div>
+      <div class="customer-logo-box reveal reveal-delay-1">
+        <img src="customer-lagos-health.png" alt="Lagos State Ministry of Health" loading="lazy" />
+      </div>
+      <div class="customer-logo-box reveal reveal-delay-2">
+        <img src="customer-abiis.png" alt="ABIIs Hotel & Suites" loading="lazy" />
+      </div>
+      <div class="customer-logo-box reveal reveal-delay-3">
+        <img src="customer-headquarters.png" alt="The Headquarters" loading="lazy" />
+      </div>
+      <div class="customer-logo-box reveal reveal-delay-4">
+        <img src="customer-crown.png" alt="Crown Interactive" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- WHY WE ARE THE BEST (FIXED MOBILE LAYOUT) -->
 <section class="block mist" id="best">
