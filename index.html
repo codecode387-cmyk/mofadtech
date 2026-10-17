@@ -124,6 +124,16 @@
   .gen-actions{display:flex;gap:9px;margin-top:18px}
   .gen-actions .btn{flex:1;justify-content:center;padding:10px 12px;font-size:.82rem}
 
+  /* WHAT WE OFFER SECTION */
+  .offer-card { display: flex; flex-direction: column; overflow: hidden; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); transition: .3s; border: 1px solid var(--line); cursor: pointer; }
+  .offer-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(8,45,114,.12); }
+  .offer-img { height: 200px; overflow: hidden; position: relative; background: var(--mist); display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--line); }
+  .offer-img img { width: 100%; height: 100%; object-fit: contain; transition: transform 0.4s ease; padding: 15px;}
+  .offer-card:hover .offer-img img { transform: scale(1.05); }
+  .offer-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+  .offer-body h3 { font-size: 1.15rem; margin-bottom: 10px; color: var(--navy); }
+  .offer-body p { font-size: 0.9rem; color: var(--muted); margin: 0; }
+
   /* WHY LIST */
   .why-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:16px}
   .why-list li{display:flex;gap:13px;color:var(--muted);font-size:.98rem; align-items: flex-start;}
@@ -297,8 +307,7 @@
     <ul class="navlinks">
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About Us</a></li>
-      <li><a href="#generators">Generators</a></li>
-      <li><a href="#services">Services</a></li>
+      <li><a href="#offer">What We Offer</a></li>
       <li><a href="#reviews">Reviews</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -316,8 +325,7 @@
   <div class="mobile-menu" id="mobileMenu">
     <a href="#home" onclick="document.getElementById('mobileMenu').classList.remove('open')">Home</a>
     <a href="#about" onclick="document.getElementById('mobileMenu').classList.remove('open')">About Us</a>
-    <a href="#generators" onclick="document.getElementById('mobileMenu').classList.remove('open')">Generators</a>
-    <a href="#services" onclick="document.getElementById('mobileMenu').classList.remove('open')">Services</a>
+    <a href="#offer" onclick="document.getElementById('mobileMenu').classList.remove('open')">What We Offer</a>
     <a href="#reviews" onclick="document.getElementById('mobileMenu').classList.remove('open')">Reviews</a>
     <a href="#contact" onclick="document.getElementById('mobileMenu').classList.remove('open')">Contact Us</a>
     <button class="btn btn-accent" onclick="document.getElementById('mobileMenu').classList.remove('open'); openModal();">Get a Quote</button>
@@ -339,7 +347,7 @@
     <p class="sub reveal reveal-delay-2">From Perkins diesel generator supply to professional installation, repairs and preventive maintenance, Mofad Technologies helps keep your operations powered.</p>
     <div class="hero-actions reveal reveal-delay-3">
       <button class="btn btn-accent" onclick="openModal()">Get a Quote</button>
-      <a href="#services" class="btn btn-outline">Explore Our Services</a>
+      <a href="#offer" class="btn btn-outline">Explore Our Products</a>
     </div>
   </div>
 </section>
@@ -365,7 +373,7 @@
         <p style="color:var(--muted);margin-top:14px"><strong>Our promise to you:</strong> We are backed by a team of experts and qualified engineers. Furthermore, all our products and work come with a valid warranty for your peace of mind.</p>
         <div style="margin-top:26px;display:flex;flex-wrap:wrap;gap:12px">
           <button class="btn btn-primary" onclick="openModal()">Get a Quote</button>
-          <a href="#services" class="btn btn-navy">Our Services</a>
+          <a href="#offer" class="btn btn-navy">What We Offer</a>
         </div>
       </div>
       <div class="intro-img reveal reveal-delay-1">
@@ -375,8 +383,87 @@
   </div>
 </section>
 
+<!-- WHAT WE OFFER SECTION -->
+<section class="block mist" id="offer">
+  <div class="wrap">
+    <div class="sec-head reveal" style="text-align:center; margin:0 auto 44px auto;">
+      <p class="eyebrow">Our Products & Services</p>
+      <h2>WHAT WE OFFER</h2>
+      <p>Kindly Click the Generator Images Below for more details on our generators.</p>
+    </div>
+    
+    <div class="grid grid-3">
+      <!-- Item 1 -->
+      <div class="offer-card reveal" onclick="openModal()">
+        <div class="offer-img">
+          <img src="fg-wilson-offer.png" alt="FG Wilson & Perkins Generator" />
+        </div>
+        <div class="offer-body">
+          <h3>Generator Supplies</h3>
+          <p>Supply & distribution of FG Wilson & Perkins (U.K) products from 12.5kva- 1500kva basic and soundproofed. We do nationwide prompt delivery for residential, commercials, and for projects.</p>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="offer-card reveal reveal-delay-1" onclick="openModal()">
+        <div class="offer-img">
+          <img src="yorc.png" alt="YORC Generator" />
+        </div>
+        <div class="offer-body">
+          <h3>Generator Supplies</h3>
+          <p>Supply & distribution of YORC products from 12.5kva- 1500kva basic and soundproofed. We do nationwide prompt delivery for residential, commercials, and for projects.</p>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="offer-card reveal reveal-delay-2" onclick="openModal()">
+        <div class="offer-img">
+          <img src="fotech-perkins.png" alt="Yihua Perkins Generator" />
+        </div>
+        <div class="offer-body">
+          <h3>Generator Supplies</h3>
+          <p>Supply and distribution of Yihua Perkins (U.K) 15kva- 700kva soundproofed only. We do nationwide prompt delivery for residential, commercials, and for projects.</p>
+        </div>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="offer-card reveal" onclick="openModal()">
+        <div class="offer-img">
+          <img src="elektromak.png" alt="Elektromak Generator" />
+        </div>
+        <div class="offer-body">
+          <h3>Generator Supplies</h3>
+          <p>Supply & distribution of Elektromak Generators powered by YTO Engine from 15kva-400kva basic/ soundproofed. We do nationwide prompt delivery for residential, commercials, & for projects.</p>
+        </div>
+      </div>
+
+      <!-- Item 5 -->
+      <div class="offer-card reveal reveal-delay-1" onclick="openModal()">
+        <div class="offer-img">
+          <img src="repairs.png" alt="Generator Repairs" />
+        </div>
+        <div class="offer-body">
+          <h3>Generator Repairs</h3>
+          <p>We maintain all kinds of Perkins (U.K) & Yihua (China) products. We repair all kinds of Perkins (U.K) & Yihua (China ) products from 12.5kva – 1000kva at homes, offices & locations nationwide.</p>
+        </div>
+      </div>
+
+      <!-- Item 6 -->
+      <div class="offer-card reveal reveal-delay-2" onclick="openModal()">
+        <div class="offer-img">
+          <img src="petrol-gen.png" alt="Petrol Generators" />
+        </div>
+        <div class="offer-body">
+          <h3>Petrol Generators</h3>
+          <p>Introducing our petrol generating sets from 2kva – 10kva aluminum coil and copper coil. Nationwide delivery and Warranty. Terms and Conditions apply.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- WHY WE ARE THE BEST (FIXED MOBILE LAYOUT) -->
-<section class="block mist" id="best">
+<section class="block" id="best">
   <div class="wrap">
     <div class="intro-grid best-grid">
       <div class="intro-img reveal">
@@ -398,7 +485,7 @@
 </section>
 
 <!-- SERVICES -->
-<section class="block" id="services">
+<section class="block mist" id="services">
   <div class="wrap">
     <div class="sec-head reveal">
       <p class="eyebrow">Our Services</p>
@@ -425,69 +512,6 @@
         <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
         <h3>Preventive Maintenance</h3>
         <p>Scheduled servicing designed to extend lifespan and reduce downtime.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- GENERATORS / PRODUCTS -->
-<section class="block mist" id="generators">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="eyebrow">Our Products & Setups</p>
-      <h2>Perkins & Diesel Generator Solutions</h2>
-      <p>We supply reliable generator sets, inverters, and solar solutions tailored to your power requirements. All products come with a warranty.</p>
-    </div>
-    <div class="grid grid-3">
-      <div class="gen-card reveal">
-        <div class="gen-img"><img src="perkins-blue.jpg" alt="Perkins Diesel Generator - Open Type" /></div>
-        <div class="gen-body">
-          <h3>Perkins Open Diesel Generator</h3>
-          <p>Heavy-duty, reliable open-frame Perkins engine for industrial and commercial power needs.</p>
-          <div class="gen-actions">
-            <button class="btn btn-primary" onclick="openModal()">Request Price</button>
-          </div>
-        </div>
-      </div>
-      <div class="gen-card reveal reveal-delay-1">
-        <div class="gen-img"><img src="fg-wilson-closed.jpg" alt="Enclosed FG Wilson Generator" /></div>
-        <div class="gen-body">
-          <h3>FG Wilson Enclosed Generator</h3>
-          <p>Soundproof, weather-resistant canopy setup perfect for residential and office environments.</p>
-          <div class="gen-actions">
-            <button class="btn btn-primary" onclick="openModal()">Request Price</button>
-          </div>
-        </div>
-      </div>
-      <div class="gen-card reveal reveal-delay-2">
-        <div class="gen-img"><img src="perkins-internal.jpg" alt="Perkins Engine Internal View" /></div>
-        <div class="gen-body">
-          <h3>Perkins Engine Internal</h3>
-          <p>Genuine Perkins engine components and expert servicing to ensure maximum performance.</p>
-          <div class="gen-actions">
-            <button class="btn btn-primary" onclick="openModal()">Request Service</button>
-          </div>
-        </div>
-      </div>
-      <div class="gen-card reveal">
-        <div class="gen-img"><img src="inverter-setup.jpg" alt="Inverter and Battery Setup" /></div>
-        <div class="gen-body">
-          <h3>Inverter & Battery Setup</h3>
-          <p>Clean, silent backup power solutions installed and commissioned by our qualified engineers.</p>
-          <div class="gen-actions">
-            <button class="btn btn-primary" onclick="openModal()">Request Price</button>
-          </div>
-        </div>
-      </div>
-      <div class="gen-card reveal reveal-delay-1">
-        <div class="gen-img"><img src="solar-batteries.jpg" alt="Solar Panels and Battery Storage" /></div>
-        <div class="gen-body">
-          <h3>Solar & Battery Storage</h3>
-          <p>Sustainable energy systems (panels, inverters, batteries) to reduce generator dependency.</p>
-          <div class="gen-actions">
-            <button class="btn btn-primary" onclick="openModal()">Request Price</button>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -698,6 +722,7 @@
         <h4>Company</h4>
         <ul>
           <li><a href="#about">About Us</a></li>
+          <li><a href="#offer">What We Offer</a></li>
           <li><a href="#best">Why We Are The Best</a></li>
           <li><a href="#reviews">Reviews</a></li>
           <li><a href="#contact">Contact Us</a></li>
